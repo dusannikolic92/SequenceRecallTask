@@ -1,0 +1,4079 @@
+var timeline = [];
+
+        // create list of all audio files for preloading
+        
+var preload = {
+    type: 'preload',
+    auto_preload: true 
+}
+timeline.push(preload);
+
+ var Ime = {
+    type: 'survey-text',
+    questions: [
+      {prompt: 'Vaše ime i prezime', required: true}
+    ]
+        };
+   timeline.push(Ime);
+
+var Welcome = {
+   type: 'html-button-response',
+   stimulus: '<p>Dobrodošli na eksperiment</p>'+
+   '<p>Molim vas da koristite <em>Google Chrome</em> ili <em>Mozilla Firefox</em>. Ukoliko nemate nijedan od ovih browsera, izadjite iz eksperimenta i javite se mejlom na dusan.nikolic1@ucalgary.ca',
+ choices: ['Počni']
+ }
+ 
+ timeline.push(Welcome);
+ 
+ 
+ timeline.push(Welcome);
+
+var Welcome0 = {
+   type: 'html-button-response',
+   stimulus: '<p>Ukoliko mislite da postoji kašnjenje, tj. da se audio zapisi učitavaju sporije, a trebalo bi da se učitavaju sasvim normalnom brzinom, molim vas da izadjete iz eksperimenta i da probate ponovo za sat vremena ili za nekoliko sati. Možete uraditi eksperiment i sutra, bitno je da se stranice učitaju normalnom brzinom, bez kašnjenja. </p>'+
+  '<p>Sada ćete čuti par rečenica na engleskom. Obratite pažnju na to da li stranici treba vremena da učita reč npr. duže od 5 sekundi. Ukoliko je potrebno toliko vremena, to znači da postoji kašnjenje. U tom slučaju izadjite i pokrenite eksperiment ponovo nešto kasnije.</p>',
+ choices: ['Hajde da testiramo']
+ }
+ 
+ timeline.push(Welcome0);
+ 
+ var audio0 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/speech_joke.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio0);
+
+var Welcome00 = {
+   type: 'html-button-response',
+   stimulus: '<p>Ukoliko nema kašnjenja, nastavite dalje. Ukoliko ste primetili duže kašnjenje, izadjite iz eksperiment.</p>',
+ choices: ['Dalje']
+ }
+ timeline.push(Welcome00);
+ 
+  ////////////     SF-SR    ///////////////////////////////////////
+  /////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
+  
+     var survey_page1 = {
+      type: 'survey-text',
+      choices: ['Enter'],
+      questions: [
+        {prompt: `<p>Dobrodošli u fazu vežbanja!</p>` + 
+              `<p>Ovo je jedna izmišljena reč koja nema apsolutno nikakvo značenje: <b>proneja</b> </p>`+
+              `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+                `<audio controls><source src="audio/FProneja_SF.mp3" type="audio/mp3"></audio>`+ 
+                `<p>Kad god čujete ovu reč, unećete u polje slovo <b>A</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`+
+                `<p>Možete uneti i veliko i malo slovo. Sasvim je svejedno!`+ `<br><b>A</b> + Enter<br>`, columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page1);
+          
+   
+     var survey_page2 = {
+      type: 'survey-text',
+      choices: ['Enter'],
+      questions: [
+        {prompt: `<p>Ovo je druga izmišljena reč koja nema apsolutno nikakvo značenje: <b>proneja</b> </p>`+
+              `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+                `<audio controls><source src="audio/FProneja_SR.mp3" type="audio/mp3"></audio>`+ 
+                `<p>Kad god čujete ovu reč, unećete u polje slovo <b>L</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page2);
+          
+          
+           var survey_page3 = {
+      type: 'survey-text',
+      choices: ['Enter'],
+      questions: [
+        {prompt:`<p>Da li ste primetili neku razliku izmedju dveju izmišljenih reči?</p>`+
+               `<p>Obe reči su <b>kratke</b>.</p>`+
+               `<p>Medjutim, na prvoj reči, visina tona <b>pada</b>, tj. ton je <b>silazni  &#8600;</b>.</p>`+
+              `<audio controls><source src="audio/FProneja_SF.mp3" type="audio/mp3"></audio>`+
+              `<p>Na drugoj reči, visina tona <b>raste</b>, tj. ton je <b>uzlazni  &#8599;</b>.</p>`+
+              `<audio controls><source src="audio/FProneja_SR.mp3" type="audio/mp3"></audio>`+
+              `<p>Vaš zadatak je da slušate reč <b>proneja</b> izgovorenu tri puta zaredom. Nakon što se sekvenca od tri reči završi, unećete u polje A i L slova onim redosledom kojim su reči izgovorene.</p>`+
+              `<p> Na primer, sada ćete čuti <b>proneja (silazni), proneja (uzlazni), proneja (silazni)</b>, pa ćete uneti u polje: <b>ALA</b>.</p>`+
+              `<audio controls><source src="audio/FProneja_SF_SR_SF.mp3" type="audio/mp3"></audio>`, columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page3);
+    
+   var survey_page4 = {
+      type: 'survey-text',
+      choices: ['Enter'],
+      questions: [
+        {prompt:`Slušajte reči <b>proneja</b> i unesite A i L u polje odgovarajućim redosledom.`+
+              `<br>Zapamtite:</br>`+
+              `silazni &#8600; = <b>A</b>`+
+              `<br>uzlazni &#8599; = <b>L</b> </br>`+
+              `<br><audio controls><source src="audio/FProneja_SF_SF_SF.mp3" type="audio/mp3"></audio></br>`, columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page4);
+    
+    var instructions = {
+      type: 'html-button-response',
+      choices: ['Spremni'],
+      stimulus: `<p>Ovog puta nećete moći da slušate audio zapis više puta, već samo <b>jednom</b>.</p>`+ 
+      `<p> Takodje ćete čuti reč <b>OK</b> na kraju audio zapisa. Ne obraćajte pažnju na ovu reč. Ona služi da bi vas zbunila.</p>`+
+              `<br>Unesite A i L odgovarajućim redosledom, onako kako čujete audio zapis.</br>`+
+              `<br>Zapamtite:</br>`+
+              `<b>silazni &#8600; = A</b>`+
+              `<br><b>uzlazni &#8599; = L</b></br>`,
+    };
+    timeline.push(instructions);
+    
+    var audio = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SR_SR_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio);
+          
+          var survey_page5 = {
+      type: 'survey-text',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page5);
+    
+          var instructions1 = {
+              type: 'instructions',
+              pages: [`<p>Odlično!</p>`+
+              `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 3 sekvence od 3 reči koje izgovaraju dve osobe - <b>jedna muškog i jedna ženskog pola</b>.</p>`+
+              `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+             `<p> Zapamtite </p>`+
+             `<p><b>silazni = A</b></p>`+
+             `<audio controls><source src="audio/FProneja_SF.mp3" type="audio/mp3"></audio>`+
+             `<br><audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+             `<p><b>uzlazni = L</b></p>`+
+             `<audio controls><source src="audio/FProneja_SR.mp3" type="audio/mp3"></audio>`+
+             `<br><audio controls><source src="audio/MProneja_SR.mp3" type="audio/mp3"></audio></br>`+
+             `<p> Sekvence ćete čuti samo jednom i svaki put na kraju sekvence ćete čuti OK.</p>`+
+              `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+              ],
+              show_clickable_nav: true,
+              response_ends_trial: true
+          }
+          timeline.push(instructions1);
+  
+    var audio1 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SF_SF_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio1);
+          
+    var survey_page6 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page6);
+    
+    var audio2 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SR_SR_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio2);
+          
+    var survey_page7 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page7);
+  
+  var audio3 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SF_SF_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio3);
+          
+    var survey_page8 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page8);
+  
+      var instructions2 = {
+              type: 'instructions',
+              pages: [`<p>Hvala!</p>`+
+              `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 8 sekvenci od <b>3</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+              `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+             `<p> Zapamtite:</p>`+
+             `<p><b>[A] = silazni</b></p>`+
+             `<br><audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+             `<p><b>[L] = uzlazni</b></p>`+
+             `<br><audio controls><source src="audio/MProneja_SR.mp3" type="audio/mp3"></audio></br>`+
+              `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>. Ne obraćajte pažnju na reč OK.</p>`+
+              `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+              ],
+              show_clickable_nav: true,
+              response_ends_trial: true
+          }
+          timeline.push(instructions2);
+          
+  var audio4 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SF_SF_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio4);
+          
+    var survey_page9 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page9);
+  
+    var audio5 = {
+      type: 'audio-keyboard-response',
+      stimulus: 'sound/FProneja_SF_SF_SF_OK.mp3',
+      prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+  };
+  timeline.push(audio5);
+  
+  var survey_page10 = {
+  type: 'survey-text_3',
+  choices: ['Enter'],
+  questions: [
+  {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+  };
+  timeline.push(survey_page10);
+    
+    var audio6 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SF_SR_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio6);
+          
+    var survey_page11 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page11);
+    
+  var audio7= {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SF_SR_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio7);
+          
+    var survey_page12 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page12);
+    
+    var audio8= {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SR_SF_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio8);
+  
+          var survey_page13 = {
+              type: 'survey-text_3',
+              choices: ['Enter'],
+              questions: [
+                {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+              ],
+            };
+            timeline.push(survey_page13);
+  
+          var audio9 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SR_SR_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio9);
+          
+          
+    var survey_page14 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page14);
+    
+    var audio10 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SR_SF_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio10);
+          
+    var survey_page15 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page15);
+    
+    var audio11= {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SR_SR_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio11);
+          
+    var survey_page16 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page16);
+    
+     var instructions3 = {
+              type: 'instructions',
+              pages: [`<p>Hvala!</p>`+
+              `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>4</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+              `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+             `<p> Zapamtite:</p>`+
+             `<p><b>[A] = silazni</b></p>`+
+             `<br><audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+             `<p><b>[L] = uzlazni</b></p>`+
+             `<br><audio controls><source src="audio/MProneja_SR.mp3" type="audio/mp3"></audio></br>`+
+              `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>4 slova<b>, npr. alal.</p>`,
+              `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+              ],
+              show_clickable_nav: true,
+              response_ends_trial: true
+          }
+          timeline.push(instructions3);
+    
+    var audio12= {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SF_SF_SR_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio12);
+          
+    var survey_page17 = {
+      type: 'survey-text_4',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor'+'<p><b>4 slova + Enter</b></p>', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page17);
+    
+    var audio13= {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SF_SR_SF_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio13);
+          
+    var survey_page18 = {
+      type: 'survey-text_4',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page18);
+    
+    var audio14 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SF_SR_SR_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio14);
+          
+    var survey_page19 = {
+      type: 'survey-text_4',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page19);
+    
+    var audio15 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SR_SR_SF_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio15);
+          
+    var survey_page20 = {
+      type: 'survey-text_4',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page20);
+    
+    var audio16 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SR_SF_SR_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio16);
+          
+    var survey_page21 = {
+      type: 'survey-text_4',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page21);
+    
+    var audio17 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SR_SF_SF_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio17);
+          
+    var survey_page22 = {
+      type: 'survey-text_4',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page22);
+    
+     var instructions4 = {
+              type: 'instructions',
+              pages: [`<p>Hvala!</p>`+
+              `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>5</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+              `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+             `<p> Zapamtite:</p>`+
+             `<p><b>[A] = silazni</b></p>`+
+             `<br><audio controls><source src="audio/FProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+             `<p><b>[L] = uzlazni</b></p>`+
+             `<br><audio controls><source src="audio/FProneja_SR.mp3" type="audio/mp3"></audio></br>`+
+              `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>5 slova<b>, npr. alala.</p>`,
+              `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+              ],
+              show_clickable_nav: true,
+              response_ends_trial: true
+          }
+          timeline.push(instructions4);
+          
+    var audio18= {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SF_SR_SR_SF_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio18);
+          
+    var survey_page23 = {
+      type: 'survey-text_5',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor'+'<p>5 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page23);
+    
+    var audio19= {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SR_SR_SF_SR_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio19);
+          
+    var survey_page24 = {
+      type: 'survey-text_5',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page24);
+    
+    var audio20 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SF_SF_SR_SF_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio20);
+          
+    var survey_page25 = {
+      type: 'survey-text_5',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page25);
+    
+    var audio21 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SR_SF_SF_SR_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio21);
+          
+    var survey_page26 = {
+      type: 'survey-text_5',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page26);
+    
+    var audio22 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/FProneja_SF_SR_SF_SF_SR_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio22);
+          
+    var survey_page27 = {
+      type: 'survey-text_5',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page27);
+    
+    var audio23 = {
+              type: 'audio-keyboard-response',
+              stimulus: 'sound/MProneja_SR_SF_SR_SR_SF_OK.mp3',
+              prompt: '<span style="font-size:40px;">+</span>',
+    trial_ends_after_audio: true,
+    response_allowed_while_playing: false,
+    post_trial_gap: 500
+          };
+          timeline.push(audio23);
+          
+    var survey_page28 = {
+      type: 'survey-text_5',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+    };
+    timeline.push(survey_page28);
+  
+   ////////////     SF-LF    ////////////////////////////////////
+  /////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
+
+
+  var survey_page29 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt: `<p>Hvala na uradjenom!</p>` + 
+            `<p>Ovo je jedna izmišljena reč koja nema apsolutno nikakvo značenje: <b>proneja</b> </p>`+
+            `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+            `<audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio>`+ 
+            `<p>Kad god čujete ovu reč, unećete u polje slovo <b>A</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page29);
+        
+ 
+   var survey_page151 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt: `<p>Ovo je druga izmišljena reč koja nema apsolutno nikakvo značenje: <b>proneja</b> </p>`+
+            `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+            `<audio controls><source src="audio/MProneja_LF.mp3" type="audio/mp3"></audio>`+ 
+            `<p>Kad god čujete ovu reč, unećete u polje slovo <b>L</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page151);
+        
+        
+         var survey_page31 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt:`<p>Da li ste primetili neku razliku izmedju dveju izmišljenih reči?</p>`+
+             `<p>Kod obe reči, ton je <b>silazni  &#8600;</b>.</p>`+
+             `<p>Medjutim, prva reč je <b>kratka</b>.</p>`+
+            `<audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio>`+
+            `<p>Druga reč je <b>duga</b>.</p>`+
+            `<audio controls><source src="audio/MProneja_LF.mp3" type="audio/mp3"></audio>`+
+            `<p>Vaš zadatak je da slušate reč <b>proneja</b> izgovorenu tri puta zaredom. Nakon što se sekvenca od tri reči završi, unećete u polje A i L slova onim redosledom reči kojim su izgovorene.</p>`+
+            `<p> Na primer, sada ćete čuti <b>proneja (kratka), proneja (duga), proneja (kratka)</b>, pa ćete uneti <b>ALA</b> u polje.</p>`+
+            `<p>Opet ćete čuti OK na kraju zapisa, zanemarite tu reč.</p>`+
+            `<audio controls><source src="audio/MProneja_SF_LF_SF_OK.mp3" type="audio/mp3"></audio>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page31);
+  
+  var instructions5 = {
+    type: 'html-button-response',
+    choices: ['Spremni'],
+    stimulus:`Ovog puta nećete moći da slušate audio zapis više puta, već samo <b>jednom</b>.`+
+            `<br>Unesite A i L odgovarajućim redosledom, onako kako čujete audio zapis.</br>`+
+            `<br>Zapamtite:</br>`+
+            `<b>kratka = A</b>`+
+            `<br><b>duga = L</b></br>`,
+  };
+  timeline.push(instructions5);
+  
+  var audio24 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LF_SF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio24);
+        
+        var survey_page32 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page32);
+  
+   var instructions6 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 8 sekvenci od <b>3</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratka</b></p>`+
+           `<br><audio controls><source src="audio/FProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = duga</b></p>`+
+           `<br><audio controls><source src="audio/FProneja_LF.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions6);
+        
+var audio25 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_SF_SF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio25);
+        
+  var survey_page33 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page33);
+  
+  var audio26 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_SF_LF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio26);
+        
+  var survey_page34 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page34);
+  
+var audio27= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LF_LF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio27);
+        
+  var survey_page35 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page35);
+
+  var audio28 = {
+    type: 'audio-keyboard-response',
+    stimulus: 'sound/MProneja_SF_SF_SF_OK.mp3',
+    prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio28);
+
+var survey_page36= {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page36);
+  
+  var audio29= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LF_SF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio29);
+        
+  var survey_page37 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page37);
+  
+  var audio30= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_SF_LF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio30);
+        
+  var survey_page38 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page38);
+  
+  var audio31= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LF_SF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio31);
+        
+  var survey_page39 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page39);
+
+  var audio32 = {
+    type: 'audio-keyboard-response',
+    stimulus: 'sound/FProneja_LF_LF_LF_OK.mp3',
+    prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio32);
+
+var survey_page40 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page40);
+  
+   var instructions7 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>4</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratka</b></p>`+
+           `<br><audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = duga</b></p>`+
+           `<br><audio controls><source src="audio/MProneja_LF.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>4 slova<b>, npr. alal.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions7);
+  
+  var audio33= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_SF_SF_LF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio33);
+        
+  var survey_page41 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>4 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page41);
+  
+  var audio34= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_SF_LF_LF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio34);
+        
+  var survey_page42 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page42);
+  
+  var audio35 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_SF_LF_SF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio35);
+        
+  var survey_page43 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page43);
+  
+  var audio36 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LF_SF_LF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio36);
+        
+  var survey_page44 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page44);
+  
+  var audio37 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LF_LF_SF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio37);
+        
+  var survey_page45 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page45);
+  
+  var audio38 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LF_SF_SF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio38);
+        
+  var survey_page46 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page46);
+  
+   var instructions8 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>5</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratka</b></p>`+
+           `<br><audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = duga</b></p>`+
+           `<br><audio controls><source src="audio/MProneja_LF.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>5 slova<b>, npr. alala.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions8);
+        
+  var audio39= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_SF_SF_LF_SF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio39);
+        
+  var survey_page47 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>5 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page47);
+  
+  var audio40= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_SF_LF_LF_SF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio40);
+        
+  var survey_page48 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page48);
+  
+  var audio42 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_SF_LF_SF_SF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio42);
+        
+  var survey_page49 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page49);
+  
+  var audio43 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LF_LF_SF_LF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio43);
+        
+  var survey_page50 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page50);
+  
+  var audio44 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LF_SF_LF_LF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio44);
+        
+  var survey_page51 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page51);
+  
+  var audio45 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LF_SF_SF_LF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio45);
+        
+  var survey_page52 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page52); 
+   
+
+  
+////////////     SF-LR    ////////////////////////////////////
+/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+
+var survey_page53 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt: `<p>Hvala na uradjenom!</p>` + 
+            `<p>Ovo je jedna izmišljena reč koja nema apsolutno nikakvo značenje: <b>proneja</b> </p>`+
+            `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+            `<audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio>`+ 
+            `<p>Kad god čujete ovu reč, unećete u polje slovo <b>A</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page53);
+        
+ 
+   var survey_page54 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt: `<p>Ovo je druga izmišljena reč koja nema apsolutno nikakvo značenje: <b>proneja</b> </p>`+
+            `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+            `<audio controls><source src="audio/MProneja_LR.mp3" type="audio/mp3"></audio>`+ 
+            `<p>Kad god čujete ovu reč, unećete u polje slovo <b>L</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page54);
+        
+        
+         var survey_page55 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt:`<p>Da li ste primetili neku razliku izmedju dveju izmišljenih reči?</p>`+
+             `<p>Kod prve reči ton je <b>silazni  &#8600;</b> i reč je <b>kratka</b>.</p>`+
+            `<audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio>`+
+            `<p>Kod druge reči ton je <b>uzlazni  &#8599;</b> i reč je <b>duga</b>.</p>`+
+            `<audio controls><source src="audio/MProneja_LR.mp3" type="audio/mp3"></audio>`+
+            `<p>Vaš zadatak je da slušate reč <b>proneja</b> izgovorenu tri puta zaredom. Nakon što se sekvenca od tri reči završi, unećete u polje A i L slova onim redosledom reči kojim su izgovorene.</p>`+
+            `<p> Na primer, sada ćete čuti <b>proneja (kratkosilazni), proneja (dugouzlazni), proneja (kratkosilazni)</b>, pa ćete uneti <b>ALA</b> u polje.</p>`+
+            `<p>Opet ćete čuti OK na kraju zapisa, zanemarite tu reč.</p>`+
+            `<audio controls><source src="audio/MProneja_SF_LR_SF_OK.mp3" type="audio/mp3"></audio>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page55);
+  
+  var instructions9 = {
+    type: 'html-button-response',
+    choices: ['Spremni'],
+    stimulus:`Ovog puta nećete moći da slušate audio zapis više puta, već samo <b>jednom</b>.`+
+            `<br>Unesite A i L odgovarajućim redosledom, onako kako čujete audio zapis.</br>`+
+            `<br>Zapamtite:</br>`+
+            `<b>kratkosilazni = A</b>`+
+            `<br><b>dugouzlazni = L</b></br>`,
+  };
+  timeline.push(instructions9);
+  
+  var audio46 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LR_SF_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio46);
+        
+        var survey_page56 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page56);
+  
+   var instructions10 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 8 sekvenci od <b>3</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratkosilazni</b></p>`+
+           `<br><audio controls><source src="audio/FProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = dugouzlazni</b></p>`+
+           `<br><audio controls><source src="audio/FProneja_LR.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions10);
+        
+  
+  var audio47 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_SF_SF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio47);
+        
+  var survey_page57 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page57);
+  
+var audio48= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LR_LR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio48);
+        
+  var survey_page58 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page58);
+
+  var audio49 = {
+    type: 'audio-keyboard-response',
+    stimulus: 'sound/FProneja_SF_SF_LR_OK.mp3',
+    prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio49);
+
+var survey_page59 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page59);
+
+  var audio50 = {
+    type: 'audio-keyboard-response',
+    stimulus: 'sound/MProneja_SF_LR_SF_OK.mp3',
+    prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio50);
+
+var survey_page60 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page60);
+  
+  
+  var audio51= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LR_LR_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio51);
+        
+  var survey_page61 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page61);
+  
+  var audio52= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_SF_LR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio52);
+        
+  var survey_page62 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page62);
+ 
+ var audio53= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LR_SF_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio53);
+        
+  var survey_page63 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page63);
+ 
+var audio54 = {
+    type: 'audio-keyboard-response',
+    stimulus: 'sound/MProneja_LR_SF_SF_OK.mp3',
+    prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio54);
+
+var survey_page64 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page64);
+  
+   var instructions11 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>4</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratkosilazni</b></p>`+
+           `<br><audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = dugouzlazni</b></p>`+
+           `<br><audio controls><source src="audio/MProneja_LR.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>4 slova<b>, npr. alal.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions11);
+  
+  var audio55= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_SF_LR_SF_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio55);
+        
+  var survey_page65 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>4 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page65);
+  
+  var audio56= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LR_SF_LR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio56);
+        
+  var survey_page66 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page66);
+  
+  var audio57 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_SF_SF_LR_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio57);
+        
+  var survey_page67 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page67);
+  
+  var audio58 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_SF_LR_LR_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio58);
+        
+  var survey_page68 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page68);
+  
+  var audio59 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LR_SF_SF_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio59);
+        
+  var survey_page69 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page69);
+  
+  var audio60 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LR_LR_SF_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio60);
+        
+  var survey_page70 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page70);
+  
+   var instructions12 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>5</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratkosilazni</b></p>`+
+           `<br><audio controls><source src="audio/MProneja_SF.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = dugouzlazni</b></p>`+
+           `<br><audio controls><source src="audio/MProneja_LR.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>5 slova<b>, npr. alala.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions12);
+        
+  var audio61= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_SF_LR_LR_SF_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio61);
+        
+  var survey_page71 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>5 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page71);
+  
+  var audio62= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_SF_SF_LR_SF_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio62);
+        
+  var survey_page72 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page72);
+  
+  var audio63 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LR_SF_SF_LR_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio63);
+        
+  var survey_page73 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page73);
+  
+  var audio64 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MProneja_LR_SF_LR_LR_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio64);
+        
+  var survey_page74 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page74);
+  
+  var audio65 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_SF_LR_SF_SF_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio65);
+        
+  var survey_page75 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page75);
+  
+  var audio66 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FProneja_LR_LR_SF_LR_SF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio66);
+        
+  var survey_page76 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page76);
+  
+
+ 
+  
+
+ 
+////////////     SR-LF    ///////////////////////////////////////
+/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+var survey_page198 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt: `<p>Dobrodošli u fazu vežbanja!</p>` + 
+            `<p>Ovo je jedna izmišljena reč koja nema apsolutno nikakvo značenje: <b>Dremina</b> </p>`+
+            `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+              `<audio controls><source src="audio/FDremina_SR.mp3" type="audio/mp3"></audio>`+ 
+              `<p>Kad god čujete ovu reč, unećete u polje slovo <b>A</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page198);
+        
+ 
+   var survey_page199 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt: `<p>Ovo je druga izmišljena reč koja nema apsolutno nikakvo značenje: <b>Dremina</b> </p>`+
+            `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+              `<audio controls><source src="audio/FDremina_LF.mp3" type="audio/mp3"></audio>`+ 
+              `<p>Kad god čujete ovu reč, unećete u polje slovo <b>L</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page199);
+        
+        
+         var survey_page200 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt:`<p>Da li ste primetili neku razliku izmedju dveju izmišljenih reči?</p>`+
+             `<p>Na prvoj reči, ton je <b>uzlazni  &#8599;</b>, a reč je <b>kratka</b> .</p>`+
+            `<audio controls><source src="audio/FDremina_SR.mp3" type="audio/mp3"></audio>`+
+            `<p>Na drugoj reči, ton je <b>silazni  &#8600;</b>, a reč je <b>duga</b>.</p>`+
+            `<audio controls><source src="audio/FDremina_LF.mp3" type="audio/mp3"></audio>`+
+            `<p>Vaš zadatak je da slušate reč <b>Dremina</b> izgovorenu tri puta zaredom. Nakon što se sekvenca od tri reči završi, unećete u polje A i L slova onim redosledom kojim su reči izgovorene.</p>`+
+            `<p> Na primer, sada ćete čuti <b>Dremina (kratkouzlazni), Dremina (dugosilazni), Dremina (kratkouzlazni)</b>, pa ćete uneti u polje: <b>ALA</b>.</p>`+
+            `<audio controls><source src="audio/FDremina_SR_LF_SR_OK.mp3" type="audio/mp3"></audio>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page200);
+  
+ var survey_page201 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt:`Slušajte reči <b>Dremina</b> i pritisnite A i L odgovarajućim redosledom.`+
+            `<br>Zapamtite:</br>`+
+            `kratkouzlazni = <b>A</b>`+
+            `<br>dugosilazni = <b>L</b> </br>`+
+            `<br><audio controls><source src="audio/FDremina_LF_SR_SR_OK.mp3" type="audio/mp3"></audio></br>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page201);
+  
+    var instructions13 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 8 sekvenci od <b>3</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratkouzlazni</b></p>`+
+           `<br><audio controls><source src="audio/MDremina_SR.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = dugosilazni</b></p>`+
+           `<br><audio controls><source src="audio/MDremina_LF.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>. Ne obraćajte pažnju na reč OK.</p>`+
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions13);
+        
+var audio185 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_SR_LF_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio185);
+        
+  var survey_page202 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page202);
+
+  var audio186 = {
+    type: 'audio-keyboard-response',
+    stimulus: 'sound/FDremina_SR_SR_LF_OK.mp3',
+    prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio186);
+
+var survey_page203 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page203);
+  
+  var audio187 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_SR_LF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio187);
+        
+  var survey_page204 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page204);
+  
+var audio67_3= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LF_LF_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio67_3);
+        
+  var survey_page205 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page205);
+  
+  var audio188= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LF_LF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio188);
+
+        var survey_page206 = {
+            type: 'survey-text_3',
+            choices: ['Enter'],
+            questions: [
+              {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+            ],
+          };
+          timeline.push(survey_page206);
+
+        var audio189 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LF_SR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio189);
+        
+  var survey_page207 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page207);
+          
+  var audio190 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_SR_SR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio190);
+        
+  var survey_page208 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page208);
+  
+  var audio191 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LF_SR_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio191);
+        
+  var survey_page209 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page209);
+  
+   var instructions14 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>4</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratkouzlazni</b></p>`+
+           `<br><audio controls><source src="audio/MDremina_SR.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = dugosilazni</b></p>`+
+           `<br><audio controls><source src="audio/MDremina_LF.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>4 slova<b>, npr. alal.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions14);
+  
+  var audio192= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_SR_LF_SR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio192);
+        
+  var survey_page210 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>4 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page210);
+  
+  var audio193= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_SR_SR_LF_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio193);
+        
+  var survey_page211= {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page211);
+  
+  var audio194 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_SR_LF_LF_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio194);
+        
+  var survey_page212 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page212);
+
+  var audio195 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LF_SR_LF_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio195);
+        
+  var survey_page213 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page213);
+  
+  var audio196 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LF_LF_SR_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio196);
+        
+  var survey_page214 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page214);
+  
+  var audio197 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LF_SR_SR_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio197);
+        
+  var survey_page215 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page215);
+  
+   var instructions15 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>5</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratkouzlazni</b></p>`+
+           `<br><audio controls><source src="audio/FDremina_SR.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = dugosilazni</b></p>`+
+           `<br><audio controls><source src="audio/FDremina_LF.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>5 slova<b>, npr. alala.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions15);
+        
+  var audio198= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_SR_SR_LF_SR_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio198);
+        
+  var survey_page216 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>5 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page216);
+  
+  var audio199= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LF_SR_SR_LF_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio199);
+        
+  var survey_page217 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page217);
+  
+  var audio200 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_SR_LF_LF_SR_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio200);
+        
+  var survey_page218 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page218);
+  
+  var audio201 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_SR_LF_SR_SR_LF_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio201);
+        
+  var survey_page219 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page219);
+  
+  var audio202 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LF_LF_SR_LF_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio202);
+        
+  var survey_page220 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page220);
+  
+  var audio203 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LF_SR_LF_LF_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio203);
+        
+  var survey_page221 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page221);
+
+
+////////////     SR-LR    ////////////////////////////////////
+/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+
+   var survey_page222 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt: `<p>Hvala na uradjenom!</p>` + 
+            `<p>Ovo je jedna izmišljena reč koja nema apsolutno nikakvo značenje: <b>Dremina</b> </p>`+
+            `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+            `<audio controls><source src="audio/MDremina_SR.mp3" type="audio/mp3"></audio>`+ 
+            `<p>Kad god čujete ovu reč, unećete u polje slovo <b>A</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page222);
+        
+ 
+   var survey_page223 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt: `<p>Ovo je druga izmišljena reč koja nema apsolutno nikakvo značenje: <b>Dremina</b> </p>`+
+            `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+            `<audio controls><source src="audio/MDremina_LR.mp3" type="audio/mp3"></audio>`+ 
+            `<p>Kad god čujete ovu reč, unećete u polje slovo <b>L</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page223);
+        
+        
+         var survey_page224 = {
+    type: 'survey-text',
+    choices: ['Enter'],
+    questions: [
+      {prompt:`<p>Da li ste primetili neku razliku izmedju dveju izmišljenih reči?</p>`+
+             `<p>Kod obe reči, ton je <b>uzlazni  &#8599;</b>.</p>`+
+             `<p>Medjutim, prva reč je <b>kratka</b>.</p>`+
+            `<audio controls><source src="audio/MDremina_SR.mp3" type="audio/mp3"></audio>`+
+            `<p>Druga reč je <b>duga</b>.</p>`+
+            `<audio controls><source src="audio/MDremina_LR.mp3" type="audio/mp3"></audio>`+
+            `<p>Vaš zadatak je da slušate reč <b>Dremina</b> izgovorenu tri puta zaredom. Nakon što se sekvenca od tri reči završi, unećete u polje A i L slova onim redosledom reči kojim su izgovorene.</p>`+
+            `<p> Na primer, sada ćete čuti <b>Dremina (kratka), Dremina (duga), Dremina (kratka)</b>, pa ćete uneti <b>ALA</b> u polje.</p>`+
+            `<p>Opet ćete čuti OK na kraju zapisa, zanemarite tu reč.</p>`+
+            `<audio controls><source src="audio/MDremina_SR_LR_SR_OK.mp3" type="audio/mp3"></audio>`, columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page224);
+  
+  var instructions16 = {
+    type: 'html-button-response',
+    choices: ['Spremni'],
+    stimulus:`Ovog puta nećete moći da slušate audio zapis više puta, već samo <b>jednom</b>.`+
+            `<br>Unesite A i L odgovarajućim redosledom, onako kako čujete audio zapis.<br>`+
+            `<br>Zapamtite:</br>`+
+            `<b>kratka = A</b>`+
+            `<br><b>duga = L</b></br>`,
+  };
+  timeline.push(instructions16);
+  
+  var audio204 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LR_SR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio204);
+        
+        var survey_page225 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page225);
+  
+   var instructions17 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 8 sekvenci od <b>3</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratka</b></p>`+
+           `<br><audio controls><source src="audio/FDremina_SR.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = duga</b></p>`+
+           `<br><audio controls><source src="audio/FDremina_LR.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions17);
+        
+var audio205 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LR_LR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio205);
+        
+  var survey_page226 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page226);
+  
+  var audio206 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_SR_SR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio206);
+        
+  var survey_page227 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page227);
+  
+var audio207= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_SR_SR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio207);
+        
+  var survey_page228 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page228);
+
+  var audio208 = {
+    type: 'audio-keyboard-response',
+    stimulus: 'sound/FDremina_SR_LR_SR_OK.mp3',
+    prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio208);
+
+var survey_page229 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page229);
+  
+  var audio209= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LR_SR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio209);
+        
+  var survey_page230 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page230);
+  
+  var audio210= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LR_SR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio210);
+        
+  var survey_page231 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page231);
+  
+  var audio211= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LR_LR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio211);
+        
+  var survey_page232 = {
+    type: 'survey-text_3',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page232);
+
+  var audio212 = {
+    type: 'audio-keyboard-response',
+    stimulus: 'sound/MDremina_SR_LR_LR_OK.mp3',
+    prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio212);
+
+var survey_page233 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page233);
+  
+   var instructions18 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>4</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratka</b></p>`+
+           `<br><audio controls><source src="audio/MDremina_SR.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = duga</b></p>`+
+           `<br><audio controls><source src="audio/MDremina_LR.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>4 slova<b>, npr. alal.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions18);
+  
+  var audio213= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_SR_LR_SR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio213);
+        
+  var survey_page234 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>4 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page234);
+  
+  var audio214= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LR_LR_SR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio214);
+        
+  var survey_page235 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page235);
+  
+  var audio215 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_SR_LR_LR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio215);
+        
+  var survey_page236 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page236);
+  
+  var audio216 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_SR_SR_LR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio216);
+        
+  var survey_page237 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page237);
+  
+  var audio217 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LR_SR_LR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio217);
+        
+  var survey_page238 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page238);
+  
+  var audio218 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LR_SR_SR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio218);
+        
+  var survey_page239 = {
+    type: 'survey-text_4',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page239);
+  
+   var instructions19 = {
+            type: 'instructions',
+            pages: [`<p>Hvala!</p>`+
+            `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>5</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+            `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+           `<p> Zapamtite:</p>`+
+           `<p><b>[A] = kratka</b></p>`+
+           `<br><audio controls><source src="audio/FDremina_SR.mp3" type="audio/mp3"></audio></br>`+
+           `<p><b>[L] = duga</b></p>`+
+           `<br><audio controls><source src="audio/FDremina_LR.mp3" type="audio/mp3"></audio></br>`+
+            `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>5 slova<b>, npr. alala.</p>`,
+            `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+            ],
+            show_clickable_nav: true,
+            response_ends_trial: true
+        }
+        timeline.push(instructions19);
+        
+  var audio219= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_SR_LR_SR_SR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio219);
+        
+  var survey_page240 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor'+'<p>5 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page240);
+  
+  var audio220= {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LR_SR_SR_LR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio220);
+        
+  var survey_page241 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page241);
+  
+  var audio221 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_SR_LR_LR_SR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio221);
+        
+  var survey_page242 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page242);
+  
+  var audio222 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_SR_SR_LR_SR_LR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio222);
+        
+  var survey_page243 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page243);
+  
+  var audio223 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/MDremina_LR_LR_SR_LR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio223);
+        
+  var survey_page244 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page244);
+  
+  var audio224 = {
+            type: 'audio-keyboard-response',
+            stimulus: 'sound/FDremina_LR_SR_LR_LR_SR_OK.mp3',
+            prompt: '<span style="font-size:40px;">+</span>',
+  trial_ends_after_audio: true,
+  response_allowed_while_playing: false,
+  post_trial_gap: 500
+        };
+        timeline.push(audio224);
+        
+  var survey_page245 = {
+    type: 'survey-text_5',
+    choices: ['Enter'],
+    questions: [
+      {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+    ],
+  };
+  timeline.push(survey_page245);
+  
+  ////////////     LF-LR    ////////////////////////////////////
+/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+
+var survey_page246 = {
+  type: 'survey-text',
+  choices: ['Enter'],
+  questions: [
+    {prompt: `<p>Hvala na uradjenom!</p>` + 
+          `<p>Ovo je jedna izmišljena reč koja nema apsolutno nikakvo značenje: <b>Dremina</b> </p>`+
+          `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+          `<audio controls><source src="audio/FDremina_LF.mp3" type="audio/mp3"></audio>`+ 
+          `<p>Kad god čujete ovu reč, unećete u polje slovo <b>A</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page246);
+      
+
+ var survey_page247 = {
+  type: 'survey-text',
+  choices: ['Enter'],
+  questions: [
+    {prompt: `<p>Ovo je druga izmišljena reč koja nema apsolutno nikakvo značenje: <b>Dremina</b> </p>`+
+          `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+          `<audio controls><source src="audio/FDremina_LR.mp3" type="audio/mp3"></audio>`+ 
+          `<p>Kad god čujete ovu reč, unećete u polje slovo <b>L</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page247);
+      
+      
+       var survey_page248 = {
+  type: 'survey-text',
+  choices: ['Enter'],
+  questions: [
+    {prompt:`<p>Da li ste primetili neku razliku izmedju dveju izmišljenih reči?</p>`+
+    `<p>Obe reči su duge.</p>`+ 
+    `<p>Medjutim, kod prve reči ton je <b>silazni  &#8600;</b>.</p>`+
+          `<audio controls><source src="audio/FDremina_LF.mp3" type="audio/mp3"></audio>`+
+          `<p>Kod druge reči ton je <b>uzlazni  &#8599;</b>.</p>`+
+          `<audio controls><source src="audio/FDremina_LR.mp3" type="audio/mp3"></audio>`+
+          `<p>Vaš zadatak je da slušate reč <b>Dremina</b> izgovorenu tri puta zaredom. Nakon što se sekvenca od tri reči završi, unećete u polje A i L slova onim redosledom reči kojim su izgovorene.</p>`+
+          `<p> Na primer, sada ćete čuti <b>Dremina (silazni), Dremina (zlazni), Dremina (silazni)</b>, pa ćete uneti <b>ALA</b> u polje.</p>`+
+          `<p>Opet ćete čuti OK na kraju zapisa, zanemarite tu reč.</p>`+
+          `<audio controls><source src="audio/FDremina_LF_LR_LF_OK.mp3" type="audio/mp3"></audio>`, columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page248);
+
+var instructions20 = {
+  type: 'html-button-response',
+  choices: ['Spremni'],
+  stimulus:`Ovog puta nećete moći da slušate audio zapis više puta, već samo <b>jednom</b>.`+
+          `<br>Unesite A i L odgovarajućim redosledom, onako kako čujete audio zapis.<br>`+
+          `<br>Zapamtite:</br>`+
+          `<b>silazni = A</b>`+
+          `<br><b>uzlazni = L</b></br>`,
+};
+timeline.push(instructions20);
+
+var audio225_ = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/FDremina_LR_LF_LR_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio225_);
+      
+      var survey_page249 = {
+  type: 'survey-text_3',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page249);
+
+ var instructions21 = {
+          type: 'instructions',
+          pages: [`<p>Hvala!</p>`+
+          `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 8 sekvenci od <b>3</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+          `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+         `<p> Zapamtite:</p>`+
+         `<p><b>[A] = silazni</b></p>`+
+         `<br><audio controls><source src="audio/MDremina_LF.mp3" type="audio/mp3"></audio></br>`+
+         `<p><b>[L] = uzlazni</b></p>`+
+         `<br><audio controls><source src="audio/MDremina_LR.mp3" type="audio/mp3"></audio></br>`+
+          `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`,
+          `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+          ],
+          show_clickable_nav: true,
+          response_ends_trial: true
+      }
+      timeline.push(instructions21);
+      
+
+var audio106_1 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/MDremina_LF_LR_LF_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio106_1);
+      
+var survey_page250 = {
+  type: 'survey-text_3',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page250);
+
+var audio107_1= {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/FDremina_LR_LF_LR_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio107_1);
+      
+var survey_page251 = {
+  type: 'survey-text_3',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page251);
+
+var audio106_2 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MDremina_LR_LR_LF_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio106_2);
+
+var survey_page252 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page252);
+
+var audio107_2 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FDremina_LF_LF_LF_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio107_2);
+
+var survey_page253 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page253);
+
+
+var audio225= {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/MDremina_LR_LF_LF_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio225);
+      
+var survey_page254 = {
+  type: 'survey-text_3',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page254);
+
+var audio226= {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/MDremina_LR_LR_LR_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio226);
+      
+var survey_page255 = {
+  type: 'survey-text_3',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page255);
+
+var audio227= {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FDremina_LF_LF_LR_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio227);
+
+var survey_page256 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page256);
+
+var audio228 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FDremina_LF_LR_LR_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio228);
+
+var survey_page257 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page257);
+
+ var instructions22 = {
+          type: 'instructions',
+          pages: [`<p>Hvala!</p>`+
+          `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>4</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+          `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+         `<p> Zapamtite:</p>`+
+         `<p><b>[A] = silazni</b></p>`+
+         `<br><audio controls><source src="audio/MDremina_LF.mp3" type="audio/mp3"></audio></br>`+
+         `<p><b>[L] = uzlazni</b></p>`+
+         `<br><audio controls><source src="audio/MDremina_LR.mp3" type="audio/mp3"></audio></br>`+
+          `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>4 slova<b>, npr. alal.</p>`,
+          `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+          ],
+          show_clickable_nav: true,
+          response_ends_trial: true
+      }
+      timeline.push(instructions22);
+
+var audio229= {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/FDremina_LR_LR_LF_LR_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio229);
+      
+var survey_page258 = {
+  type: 'survey-text_4',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor'+'<p>4 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page258);
+
+var audio230= {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/MDremina_LR_LF_LR_LR_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio230);
+      
+var survey_page259 = {
+  type: 'survey-text_4',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page259);
+
+var audio231 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/MDremina_LF_LR_LF_LF_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio231);
+      
+var survey_page260 = {
+  type: 'survey-text_4',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page260);
+
+var audio232 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/FDremina_LF_LR_LR_LF_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio232);
+      
+var survey_page261 = {
+  type: 'survey-text_4',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page261);
+
+var audio233 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/FDremina_LF_LF_LR_LF_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio233);
+      
+var survey_page262 = {
+  type: 'survey-text_4',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page262);
+
+var audio234 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/MDremina_LR_LF_LF_LR_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio234);
+      
+var survey_page263 = {
+  type: 'survey-text_4',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page263);
+
+ var instructions24 = {
+          type: 'instructions',
+          pages: [`<p>Hvala!</p>`+
+          `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 6 sekvenci od <b>5</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+          `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+         `<p> Zapamtite:</p>`+
+         `<p><b>[A] = silazni</b></p>`+
+         `<br><audio controls><source src="audio/MDremina_LF.mp3" type="audio/mp3"></audio></br>`+
+         `<p><b>[L] = uzlazni</b></p>`+
+         `<br><audio controls><source src="audio/MDremina_LR.mp3" type="audio/mp3"></audio></br>`+
+          `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>5 slova<b>, npr. alala.</p>`,
+          `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+          ],
+          show_clickable_nav: true,
+          response_ends_trial: true
+      }
+      timeline.push(instructions24);
+      
+var audio235 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/MDremina_LF_LF_LR_LF_LR_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio235);
+      
+var survey_page264 = {
+  type: 'survey-text_5',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor'+'<p>5 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page264);
+
+var audio236 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/FDremina_LR_LR_LF_LR_LF_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio236);
+      
+var survey_page265 = {
+  type: 'survey-text_5',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page265);
+
+var audio237 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/FDremina_LF_LR_LF_LF_LR_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio237);
+      
+var survey_page266 = {
+  type: 'survey-text_5',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page266);
+
+var audio238 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/MDremina_LR_LF_LR_LR_LF_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio238);
+      
+var survey_page267 = {
+  type: 'survey-text_5',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page267);
+
+var audio239 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/MDremina_LR_LF_LF_LR_LF_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio239);
+      
+var survey_page268 = {
+  type: 'survey-text_5',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page268);
+
+var audio240 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/FDremina_LF_LR_LR_LF_LR_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio240);
+      
+var survey_page269 = {
+  type: 'survey-text_5',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page269);
+
+
+
+/////////////////  FOTAVA - FOKAVA ///////////////////////////////
+//////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+var survey_page300 = {
+  type: 'survey-text',
+  choices: ['Enter'],
+  questions: [
+    {prompt: `<p>Hvala na uradjenom!</p>` + 
+    `<p>Dobrodošli u poslednji deo eksperimenta</p>`+      
+    `<p>Ovo je jedna izmišljena reč koja nema apsolutno nikakvo značenje: <b>Fotava</b> </p>`+
+          `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+          `<audio controls><source src="audio/FFotava.mp3" type="audio/mp3"></audio>`+ 
+          `<p>Kad god čujete ovu reč, unećete u polje slovo <b>A</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page300);
+      
+
+ var survey_page301 = {
+  type: 'survey-text',
+  choices: ['Enter'],
+  questions: [
+    {prompt: `<p>Ovo je druga izmišljena reč koja nema apsolutno nikakvo značenje: <b>Fokava</b> </p>`+
+          `<p>Poslušajte ovu reč nekoliko puta.</p>`+
+          `<audio controls><source src="audio/FFokava.mp3" type="audio/mp3"></audio>`+ 
+          `<p>Kad god čujete ovu reč, unećete u polje slovo <b>L</b> a zatim ćete pritisnuti Enter. Nemojte kliktati na dugme "Nastavi", zanemarite to dugme.</p>`, columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page301);
+      
+      
+       var survey_page302 = {
+  type: 'survey-text',
+  choices: ['Enter'],
+  questions: [
+    {prompt:`<p>Da li ste primetili neku razliku izmedju dveju izmišljenih reči?</p>`+
+           `<p>Razlika je samo u jednom glasu</b>.</p>`+
+           `<p>Prva reč sadrži glas <b>t</b>.</p>`+
+          `<audio controls><source src="audio/MFotava.mp3" type="audio/mp3"></audio>`+
+          `<p>Druga sadrži glas <b>k</b>.</p>`+
+          `<audio controls><source src="audio/MFokava.mp3" type="audio/mp3"></audio>`+
+          `<p>Vaš zadatak je da slušate ove dve reči izgovorene tri puta zaredom. Nakon što se sekvenca od tri reči završi, unećete u polje A i L slova onim redosledom reči kojim su izgovorene.</p>`+
+          `<p> Na primer, sada ćete čuti <b>Fotava, Fokava, Fotava</b>, pa ćete uneti <b>ALA</b> u polje.</p>`+
+          `<p>Opet ćete čuti OK na kraju zapisa, zanemarite tu reč.</p>`+
+          `<audio controls><source src="audio/MFotava_Fokava_Fotava_OK.mp3" type="audio/mp3"></audio>`, columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page302);
+
+var instructions300 = {
+  type: 'html-button-response',
+  choices: ['Spremni'],
+  stimulus:`Ovog puta nećete moći da slušate audio zapis više puta, već samo <b>jednom</b>.`+
+          `<br>Unesite A i L odgovarajućim redosledom, onako kako čujete audio zapis.<br>`+
+          `<br>Zapamtite:</br>`+
+          `<b>Fotava = A</b>`+
+          `<br><b>Fokava = L</b></br>`,
+};
+timeline.push(instructions300);
+
+var audio300 = {
+          type: 'audio-keyboard-response',
+          stimulus: 'sound/FFotava_Fotava_Fokava_OK.mp3',
+          prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+      };
+      timeline.push(audio300);
+      
+      var survey_page303 = {
+  type: 'survey-text_3',
+  choices: ['Enter'],
+  questions: [
+    {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+  ],
+};
+timeline.push(survey_page303);
+
+ var instructions301 = {
+          type: 'instructions',
+          pages: [`<p>Hvala!</p>`+
+          `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 12 sekvenci od <b>3</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+          `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+         `<p> Zapamtite:</p>`+
+         `<p><b>[A] = Fotava</b></p>`+
+         `<br><audio controls><source src="audio/FFotava.mp3" type="audio/mp3"></audio></br>`+
+         `<p><b>[L] = Fokava</b></p>`+
+         `<br><audio controls><source src="audio/FFokava.mp3" type="audio/mp3"></audio></br>`+
+          `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`,
+          `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+          ],
+          show_clickable_nav: true,
+          response_ends_trial: true
+      }
+      timeline.push(instructions301); 
+      
+      var audio301 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/FFotava_Fotava_Fokava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio301);
+    
+var survey_page304 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor'+'<p>3 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page304);
+
+var audio302 = {
+type: 'audio-keyboard-response',
+stimulus: 'sound/MFokava_Fotava_Fotava_OK.mp3',
+prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio302);
+
+var survey_page305 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page305);
+
+var audio303 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/MFotava_Fotava_Fokava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio303);
+    
+var survey_page306 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page306);
+
+var audio304 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/FFotava_Fokava_Fokava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio304);
+    
+var survey_page307 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page307);
+
+var audio305 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/MFotava_Fokava_Fokava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio305);
+
+    var survey_page308 = {
+        type: 'survey-text_3',
+        choices: ['Enter'],
+        questions: [
+          {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+        ],
+      };
+      timeline.push(survey_page308);
+
+    var audio306 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/FFokava_Fotava_Fokava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio306);
+    
+    
+var survey_page309 = {
+type: 'survey-text_3',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page309);
+
+var audio307 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/MFokava_Fotava_Fokava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio307);      
+
+    var survey_page310 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+      };
+      timeline.push(survey_page310);  
+      
+      var audio308 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/FFotava_Fokava_Fotava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio308);      
+
+    var survey_page311 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+      };
+      timeline.push(survey_page311); 
+
+var audio309 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/FFokava_Fokava_Fotava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio309);      
+
+    var survey_page312 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+      };
+      timeline.push(survey_page312); 
+
+      var audio310 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/MFokava_Fokava_Fotava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio310);      
+
+    var survey_page313 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+      };
+      timeline.push(survey_page313);
+
+      var audio311 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/MFotava_Fokava_Fotava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio311);      
+
+    var survey_page314 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+      };
+      timeline.push(survey_page314);
+
+      var audio312 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/FFokava_Fotava_Fotava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio312);      
+
+    var survey_page315 = {
+      type: 'survey-text_3',
+      choices: ['Enter'],
+      questions: [
+        {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+      ],
+      };
+      timeline.push(survey_page315);
+
+      var instructions302 = {
+        type: 'instructions',
+        pages: [`<p>Hvala!</p>`+
+        `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 12 sekvenci od <b>4</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+        `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+       `<p> Zapamtite:</p>`+
+       `<p><b>[A] = Fotava</b></p>`+
+       `<br><audio controls><source src="audio/MFotava.mp3" type="audio/mp3"></audio></br>`+
+       `<p><b>[L] = Fokava</b></p>`+
+       `<br><audio controls><source src="audio/MFokava.mp3" type="audio/mp3"></audio></br>`+
+        `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>4 slova<b>, npr. alal.</p>`,
+        `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+        ],
+        show_clickable_nav: true,
+        response_ends_trial: true
+    }
+    timeline.push(instructions302);
+
+var audio313= {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/MFotava_Fotava_Fokava_Fotava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio313);
+    
+var survey_page316 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor'+'<p>4 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page316);
+
+var audio314= {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/MFotava_Fokava_Fokava_Fotava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio314);
+    
+var survey_page317 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page317);
+
+var audio315 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/FFotava_Fokava_Fotava_Fotava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio315);
+    
+var survey_page318 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page318);
+
+var audio316 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/FFokava_Fokava_Fotava_Fokava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio316);
+    
+var survey_page319 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page319);
+
+var audio317 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/MFokava_Fotava_Fotava_Fokava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio317);
+    
+var survey_page320 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page320);
+
+var audio318 = {
+        type: 'audio-keyboard-response',
+        stimulus: 'sound/FFotava_Fokava_Fokava_Fotava_OK.mp3',
+        prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+    };
+    timeline.push(audio318);
+    
+var survey_page321 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+  {prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page321);
+
+var audio319 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FFokava_Fotava_Fotava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio319);
+
+var survey_page322 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page322);
+
+var audio320 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MFokava_Fokava_Fotava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio320);
+
+var survey_page323 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page323);
+
+var audio321 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MFotava_Fokava_Fotava_Fotava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio321);
+
+var survey_page324 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page324);
+
+var audio322 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MFokava_Fotava_Fotava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio322);
+
+var survey_page325 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page325);
+
+var audio323 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FFokava_Fotava_Fokava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio323);
+
+var survey_page326 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page326);
+
+var audio324 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FFotava_Fotava_Fokava_Fotava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio324);
+
+var survey_page327 = {
+type: 'survey-text_4',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page327);
+
+
+var instructions303 = {
+  type: 'instructions',
+  pages: [`<p>Hvala!</p>`+
+  `<p>Sada ćete imati nešto teži zadatak! U nastavku ćete čuti 12 sekvenci od <b>5</b> reči koje izgovaraju dve osobe muškog i ženskog pola.</p>`+
+  `<p>Vaš zadatak je da unesete kombinaciju A i L koja odgovara onome što čujete.</p>`,
+ `<p> Zapamtite:</p>`+
+ `<p><b>[A] = Fotava</b></p>`+
+ `<br><audio controls><source src="audio/MFotava.mp3" type="audio/mp3"></audio></br>`+
+ `<p><b>[L] = Fokava</b></p>`+
+ `<br><audio controls><source src="audio/MFokava.mp3" type="audio/mp3"></audio></br>`+
+  `<p>Moći ćete da čujete audio zapis samo <b>jednom</b>.</p>`+ `<p><b>5 slova<b>, npr. alala.</p>`,
+  `<p> Ukoliko ste spremni, kliknite 'Sledeća'.</p>`,
+  ],
+  show_clickable_nav: true,
+  response_ends_trial: true
+}
+timeline.push(instructions303);
+
+var audio325= {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FFotava_Fokava_Fokava_Fotava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio325);
+
+var survey_page328 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor'+'<p>5 slova + Enter</p>', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page328);
+
+var audio326= {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MFokava_Fokava_Fotava_Fokava_Fotava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio326);
+
+var survey_page329 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page329);
+
+var audio327 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FFokava_Fotava_Fotava_Fokava_Fotava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio327);
+
+var survey_page330 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page330);
+
+var audio328 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MFotava_Fokava_Fotava_Fotava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio328);
+
+var survey_page331 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page331);
+
+var audio329 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FFotava_Fokava_Fotava_Fotava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio329);
+
+var survey_page332 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page332);
+
+var audio330 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MFokava_Fotava_Fotava_Fokava_Fotava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio330);
+
+var survey_page333 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page333);
+
+var audio331 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FFokava_Fokava_Fotava_Fokava_Fotava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio331);
+
+var survey_page334 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page334);
+
+var audio332 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MFokava_Fotava_Fokava_Fokava_Fotava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio332);
+
+var survey_page335 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page335);
+
+var audio333 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MFotava_Fotava_Fokava_Fotava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio333);
+
+var survey_page336 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page336);
+
+var audio334 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FFotava_Fotava_Fokava_Fotava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio334);
+
+var survey_page337 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page337);
+
+var audio335 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/FFokava_Fotava_Fokava_Fokava_Fotava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio335);
+
+var survey_page338 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page338);
+
+var audio336 = {
+  type: 'audio-keyboard-response',
+  stimulus: 'sound/MFotava_Fokava_Fokava_Fotava_Fokava_OK.mp3',
+  prompt: '<span style="font-size:40px;">+</span>',
+trial_ends_after_audio: true,
+response_allowed_while_playing: false,
+post_trial_gap: 500
+};
+timeline.push(audio336);
+
+var survey_page339 = {
+type: 'survey-text_5',
+choices: ['Enter'],
+questions: [
+{prompt: 'Odgovor', columns: 3, required: true, name: 'Odgovor'}
+],
+};
+timeline.push(survey_page339);
+
+  
+   var block0 = {
+    type: 'survey-text',
+    questions: [
+      {prompt: '<p>Hvala na učestvovanju!.</p>'+
+'<p>Da li možete ukratko napisati kako vam se svideo eksperiment, koje strategije ste koristili da biste odgovorili na pitanja, šta vam je bilo najteže ili najlakše, itd. Svaki komentar u vezi sa eksperimentom je dobrodošao.</p>', placeholder: 'Eksperiment je...', rows:10, columns: 50}
+    ]
+        };
+   timeline.push(block0);  
+  
+
+        var block = {
+    type: 'html-keyboard-response',
+    choices: ['a'], 
+  stimulus: '<p>Pritisnite [A] da biste završili sa eksperiment.</p>',
+    stimulus_width: 300,
+    on_finish: function(data) {
+      if (jsPsych.pluginAPI.compareKeys(data.response, 'a')) {
+        jsPsych.endExperiment('Hvala na učestvovanju. Eksperiment je završen. Možete zatvoriti stranicu.');
+      }
+    }
+        };
+   timeline.push(block);
+  
+    
+        jsPsych.init({
+            timeline: timeline,
+            preload_audio: preload,
+            show_preload_progress_bar: true,
+            message_progress_bar: "Kako napredujem",
+            show_progress_bar: true,
+            use_webaudio: false,
+            case_sensitive_responses: true,
+        })
